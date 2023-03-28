@@ -56,9 +56,6 @@
         },
         "usingComponents" : true,
         "permission" : {
-            "scope.userLocation" : {
-                "desc" : ""
-            }
         }
     },
     "mp-alipay" : {

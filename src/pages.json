@@ -1,9 +1,21 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-			"path": "pages/index/index",
+			"path": "pages/demo/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "组件示例"
+			}
+		},
+    {
+			"path": "pages/demo/list-news",
+			"style": {
+				"navigationBarTitleText": "mescroll-uni下拉刷新"
+			}
+		},
+    {
+			"path": "pages/demo/list-products",
+			"style": {
+				"navigationBarTitleText": "mescroll简单用法"
 			}
 		}
 	],
