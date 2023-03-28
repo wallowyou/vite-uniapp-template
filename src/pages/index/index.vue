@@ -8,8 +8,23 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import { getRandomImage } from '@/api/app'
+console.log(import.meta.env)
+// 获取验证码
+const getRandomImg = async () => {
+  const key = +new Date() + ''
+  try {
+    let res = await getRandomImage(key)
+    console.log(res)
+  } catch (error) {
+    console.log(error)
+  }
+}
 const title = ref('Hello')
+onMounted(() => {
+  getRandomImg()
+})
 </script>
 
 <style>
