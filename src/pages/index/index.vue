@@ -8,21 +8,21 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
+import { onLoad } from '@dcloudio/uni-app'
 import { getRandomImage } from '@/api/app'
-console.log(import.meta.env)
 // 获取验证码
 const getRandomImg = async () => {
   const key = +new Date() + ''
   try {
-    let res = await getRandomImage(key)
-    console.log(res)
+    await getRandomImage(key)
   } catch (error) {
-    console.log(error)
+    console.log(error, 'error')
   }
 }
 const title = ref('Hello')
-onMounted(() => {
+onLoad(() => {
+  console.log('page onLoad')
   getRandomImg()
 })
 </script>

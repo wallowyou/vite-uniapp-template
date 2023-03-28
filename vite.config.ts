@@ -1,6 +1,6 @@
-import { defineConfig ,loadEnv} from "vite";
+import { defineConfig, loadEnv } from 'vite'
 import type { UserConfig, ConfigEnv } from 'vite'
-import uni from "@dcloudio/vite-plugin-uni";
+import uni from '@dcloudio/vite-plugin-uni'
 /**
  * @description: 此函数用来格式化环境变量
  * @param {object} envConf
@@ -21,23 +21,23 @@ const wrapperEnv = (envConf: { [key: string]: any }): ViteEnv => {
   return ret
 }
 // https://vitejs.dev/config/
-export default defineConfig(({command, mode} : ConfigEnv) : UserConfig => {
+export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
   console.log(command, mode)
-  const isBuild = command === 'build'
+  const isBuild = mode === 'production'
   const root = process.cwd()
   const env = loadEnv(mode, root, 'VITE_')
   const viteEnv = wrapperEnv(env)
-  const {VITE_PUBLIC_PATH} = viteEnv
+  const { VITE_PUBLIC_PATH } = viteEnv
   return {
     base: VITE_PUBLIC_PATH,
     plugins: [uni()],
     build: {
       minify: 'terser',
       terserOptions: {
-      compress: {
+        compress: {
           drop_console: isBuild
         }
       }
     }
   }
-});
+})
